@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finanzas y libertad</title>
+
+
+<meta property="og:title" content="Finanzas y libertad">
+
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid}
+  html{min-height:100%;scroll-behavior:smooth}
+  body{margin:0;min-height:100vh;overflow-x:hidden;overflow-y:auto;padding:0}
+  body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"ss01","cv11";text-rendering:optimizeLegibility}
+  .sales-preview{display:block!important;height:auto!important;min-height:100vh!important;overflow:visible!important;width:100%!important}
+  .sales-preview>[data-section-kind]{display:block!important;position:relative}
+  h1,h2,h3,h4{font-weight:800!important;letter-spacing:-0.025em}
+  :where(h1,h2,h3,h4,h5,h6,p,blockquote,figure,dl,dd){margin:0}
+  :where(ul,ol){margin:0;padding:0}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:inherit}
+  button,input,textarea,select{font:inherit}
+  details summary::-webkit-details-marker{display:none}
+.sales-preview .sales-smart-grid,
+.sales-preview .sales-testimonials-grid,
+.sales-preview[data-sales-device="desktop"] .sales-testimonials-grid,
+.sales-preview[data-sales-device="desktop"] .sales-smart-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .sales-preview[data-sales-device="desktop"] .sales-smart-grid,
+  .sales-preview:not([data-sales-device="mobile"]) .sales-smart-grid {
+    grid-template-columns: var(--sales-desktop-grid-template, repeat(2, minmax(0, 1fr)));
+  }
+
+  .sales-preview[data-sales-device="desktop"] .sales-testimonials-grid,
+  .sales-preview:not([data-sales-device="mobile"]) .sales-testimonials-grid {
+    grid-template-columns: var(--sales-testimonials-desktop-grid-template, repeat(2, minmax(0, 1fr)));
+  }
+}
+
+.sales-media-frame {
+  max-width: 100%;
+}
+
+.sales-preview[data-sales-device="desktop"] .sales-media-frame,
+.sales-preview:not([data-sales-device="mobile"]) .sales-media-frame {
+  max-width: min(100%, 580px) !important;
+}
+
+.sales-pricing-section,
+.sales-pricing-card {
+  overflow: visible !important;
+  position: relative;
+  z-index: 2;
+}
+
+.sales-pricing-media {
+  margin-top: calc(clamp(-104px, -9.5vw, -58px) + var(--sales-pricing-image-offset-y, 0px)) !important;
+  margin-bottom: clamp(-10px, -1.2vw, -4px) !important;
+  position: relative;
+  z-index: 3 !important;
+  transform: translateY(calc(clamp(-12px, -1.4vw, -6px) + var(--sales-pricing-image-offset-y, 0px)));
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.22));
+}
+
+.sales-rich-text :where(h1, h2, h3, p) {
+  font-family: inherit;
+  font-weight: inherit !important;
+  letter-spacing: inherit;
+  margin: 0;
+}
+
+.sales-rich-text h1 {
+  font-size: var(--sales-rich-text-h1-size, 1.35em);
+  line-height: var(--sales-rich-text-heading-line-height, 1.12);
+}
+
+.sales-rich-text h2 {
+  font-size: var(--sales-rich-text-h2-size, 1.18em);
+  line-height: var(--sales-rich-text-heading-line-height, 1.18);
+}
+
+.sales-rich-text h3 {
+  font-size: var(--sales-rich-text-h3-size, 1.05em);
+  line-height: var(--sales-rich-text-heading-line-height, 1.22);
+}
+
+.sales-rich-text .ql-align-center {
+  text-align: center;
+}
+
+.sales-rich-text .ql-align-left {
+  text-align: left;
+}
+
+.sales-rich-text .ql-align-right {
+  text-align: right;
+}
+
+.sales-rich-text .ql-align-justify {
+  text-align: justify;
+}
+
+.sales-preview[data-sales-device="desktop"] .sales-hero-headline,
+.sales-preview:not([data-sales-device="mobile"]) .sales-hero-headline {
+  font-size: calc(var(--sales-hero-title-size, 32px) * 1.18) !important;
+}
+
+.sales-preview[data-sales-device="desktop"] .sales-hero-subheadline,
+.sales-preview:not([data-sales-device="mobile"]) .sales-hero-subheadline {
+  font-size: calc(var(--sales-hero-subtitle-size, 17px) * 1.1) !important;
+}
+
+.sales-checklist-item .sales-rich-text {
+  font-size: inherit !important;
+}
+
+.sales-countdown-grid {
+  --sales-countdown-cell-block-padding: calc(clamp(8px, 2.4vw, 14px) * var(--sales-countdown-scale, 1));
+  --sales-countdown-cell-inline-padding: calc(clamp(4px, 1.8vw, 10px) * var(--sales-countdown-scale, 1));
+  --sales-countdown-gap: calc(clamp(4px, 1.6vw, 10px) * var(--sales-countdown-scale, 1));
+  --sales-countdown-max-cell-width: calc(
+    (100cqw - (var(--sales-countdown-columns, 4) - 1) * var(--sales-countdown-gap)) /
+      var(--sales-countdown-columns, 4)
+  );
+  container-type: inline-size;
+  display: flex;
+  gap: var(--sales-countdown-gap);
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.sales-countdown-cell {
+  flex: 0 1 min(
+    max(
+      calc(92px * var(--sales-countdown-scale, 1)),
+      calc(var(--sales-countdown-number-size, 34px) * var(--sales-countdown-scale, 1) * 1.55)
+    ),
+    var(--sales-countdown-max-cell-width)
+  );
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.sales-countdown-value {
+  font-size: clamp(
+    12px,
+    min(
+      calc(var(--sales-countdown-number-size, 34px) * var(--sales-countdown-scale, 1)),
+      calc(
+        (var(--sales-countdown-max-cell-width) - (var(--sales-countdown-cell-inline-padding) * 2)) /
+          1.14
+      )
+    ),
+    calc(var(--sales-countdown-number-size, 34px) * var(--sales-countdown-scale, 1))
+  ) !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+.sales-countdown-cell [data-label-unit] {
+  font-size: clamp(9px, calc(var(--sales-countdown-label-size, 11px) * var(--sales-countdown-scale, 1)), 38px) !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+.sales-button-cta {
+  cursor: pointer;
+  min-height: 52px;
+  overflow-wrap: anywhere;
+  position: relative;
+  z-index: 2;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sales-button-section {
+  overflow: visible !important;
+  position: relative;
+  z-index: 2;
+}
+
+.sales-preview[data-sales-device="mobile"] .sales-button-cta[data-full-width="true"] {
+  --sales-button-full-max-width: 100%;
+}
+
+.sales-preview[data-sales-device="desktop"] .sales-button-cta[data-full-width="true"],
+.sales-preview:not([data-sales-device="mobile"]) .sales-button-cta[data-full-width="true"] {
+  --sales-button-full-max-width: 560px;
+}
+
+.sales-button-cta[data-button-style="step"] {
+  box-shadow:
+    0 7px 0 var(--sales-button-step-color),
+    0 16px 28px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+.sales-button-cta[data-button-style="step"]:active {
+  box-shadow:
+    0 2px 0 var(--sales-button-step-color),
+    0 8px 16px rgba(0, 0, 0, 0.16);
+  transform: translateY(2px);
+}
+
+.sales-button-cta[data-animated="true"] {
+  animation: sales-button-pulse 2400ms cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.sales-button-cta[data-animated="true"][data-button-style="step"] {
+  animation-name: sales-button-step-pulse;
+}
+
+.sales-arrows {
+  --sales-arrow-move-x: 0px;
+  --sales-arrow-move-y: 8px;
+}
+
+.sales-arrows[data-direction="up"] {
+  --sales-arrow-move-y: -8px;
+}
+
+.sales-arrows[data-direction="left"] {
+  --sales-arrow-move-x: -8px;
+  --sales-arrow-move-y: 0px;
+}
+
+.sales-arrows[data-direction="right"] {
+  --sales-arrow-move-x: 8px;
+  --sales-arrow-move-y: 0px;
+}
+
+.sales-arrows[data-animated="true"][data-animation-style="flow"] .sales-arrow-icon {
+  animation: sales-arrow-flow 1200ms cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.sales-arrows[data-animated="true"][data-animation-style="bounce"] .sales-arrow-icon {
+  animation: sales-arrow-bounce 900ms cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+.sales-arrows[data-animated="true"][data-animation-style="pulse"] .sales-arrow-icon {
+  animation: sales-arrow-pulse 1050ms ease-in-out infinite;
+}
+
+.sales-purchase-toast {
+  align-items: flex-start;
+  background: var(--sales-purchase-bg, #111827);
+  border: 1px solid color-mix(in srgb, var(--sales-purchase-text, #ffffff) 16%, transparent);
+  border-radius: 14px;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+  color: var(--sales-purchase-text, #ffffff);
+  display: flex;
+  gap: 12px;
+  max-width: min(calc(100vw - 28px), 360px);
+  min-width: min(calc(100vw - 28px), 300px);
+  opacity: 0;
+  padding: 14px 16px;
+  pointer-events: none;
+  position: fixed;
+  transform: translate3d(0, 12px, 0) scale(0.98);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2147483000;
+}
+
+.sales-purchase-toast[data-visible="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.sales-purchase-toast[data-position="bottom-left"] {
+  bottom: 18px;
+  left: 18px;
+}
+
+.sales-purchase-toast[data-position="bottom-right"] {
+  bottom: 18px;
+  right: 18px;
+}
+
+.sales-purchase-toast[data-position="top-left"] {
+  left: 18px;
+  top: 18px;
+}
+
+.sales-purchase-toast[data-position="top-right"] {
+  right: 18px;
+  top: 18px;
+}
+
+.sales-purchase-toast-icon {
+  align-items: center;
+  background: var(--sales-purchase-accent, #22c55e);
+  border-radius: 999px;
+  color: #ffffff;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 900;
+  height: 28px;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 1px;
+  width: 28px;
+}
+
+.sales-purchase-toast-content {
+  min-width: 0;
+}
+
+.sales-purchase-toast-title {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.sales-purchase-toast-message {
+  font-size: 13px;
+  line-height: 1.35;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+.sales-purchase-toast-time {
+  color: var(--sales-purchase-accent, #22c55e);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+
+@media (hover: hover) {
+  .sales-button-cta:not([data-animated="true"]):hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .sales-button-cta:not([data-animated="true"])[data-button-style="step"]:hover {
+    box-shadow:
+      0 9px 0 var(--sales-button-step-color),
+      0 20px 32px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes sales-arrow-flow {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translate(0, 0) scale(0.96);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(var(--sales-arrow-move-x), var(--sales-arrow-move-y)) scale(1.08);
+  }
+}
+
+@keyframes sales-arrow-bounce {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--sales-arrow-move-x), var(--sales-arrow-move-y)) scale(1.06);
+  }
+}
+
+@keyframes sales-arrow-pulse {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes sales-button-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.025);
+  }
+}
+
+@keyframes sales-button-step-pulse {
+  0%,
+  100% {
+    transform: translateY(-3px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.018);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sales-button-cta,
+  .sales-arrows .sales-arrow-icon,
+  .sales-purchase-toast {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+	</style>
+
+</head>
+<body>
+
+<div style="background-color:#050505;color:#f8fafc;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;min-height:100%;scroll-behavior:smooth;width:100%" class="sales-preview min-h-full w-full" data-sales-device="desktop"><div id="inicio" data-section-kind="hero" class="sales-delayed-section" data-sales-delay-seconds="2" aria-hidden="true" style="display:none"><section style="padding:45px 24px 20px;padding-bottom:0px;text-align:center;background:#0b0b0b;color:#ffffff;overflow:visible;position:relative"><div aria-hidden="true" data-sales-hero-cut-shape="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 78% 52% at 66% 22%, rgba(34, 197, 94, 0.215) 0%, transparent 100%), #0e3300;clip-path:polygon(0 0, 100% 0, 100% calc(100% - 72px), 0 calc(100% - 0px));-webkit-clip-path:polygon(0 0, 100% 0, 100% calc(100% - 72px), 0 calc(100% - 0px));pointer-events:none;z-index:0"></div><div style="max-width:800px;margin:0 auto;position:relative;z-index:1"><div class="sales-rich-text sales-hero-headline" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#ffffff;--sales-hero-title-size:32px;font-size:var(--sales-hero-title-size);line-height:1.15;margin-bottom:12px;font-weight:800;letter-spacing:-0.01em"><p>CALCULADORA DE LA VERDAD</p></div><div class="sales-rich-text sales-hero-subheadline" style="--sales-hero-subtitle-size:17px;color:#ffffff;font-size:var(--sales-hero-subtitle-size);line-height:1.45;margin-bottom:0;opacity:0.9"><p>Calculadora que revela la trampa del pago mínimo y te entrega el orden exacto para salir de deudas sin enloquecer.</p></div></div></section></div><div id="checklist" data-section-kind="checklist"><section style="padding:32px 24px 32px;background:#0b0b0b;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-smart-grid" style="display:grid;justify-items:start;gap:12px;--sales-desktop-grid-template:minmax(0, 1fr)"><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">★</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>La trampa silenciosa del pago mínimo que te condena a pagar tres veces tu deuda.</p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">★</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>El orden matemático exacto para liquidar tarjetas sin quemar tu sueldo.</p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">★</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>Diagnóstico completo en 8 minutos, sin planillas complejas, sin intermediarios.</p><p><br></p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">★</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>El plan de acción de 48 horas para parar las llamadas de cobranza.</p></div></span></div></div></div></section></div><div id="preco" data-section-kind="price"><section style="padding:32px 24px 32px;background:#050505;color:#f8fafc;text-align:center"><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px"><p style="font-size:22px;font-style:italic;font-weight:700;color:#e53434;text-decoration:line-through;text-decoration-color:#e53434;margin:0">De USD $ 139.00</p><p style="font-size:14px;letter-spacing:0.14em;font-weight:600;color:#f8fafc;margin:0">Pagas menos que una comida rápida para recuperar años de tu vida.</p></div><p style="font-size:60px;font-weight:900;color:#22c55e;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;line-height:1;margin:0;letter-spacing:-0.02em">por USD $14.00</p></div></section></div><div id="botao" data-section-kind="button"><section class="sales-button-section" style="padding:20px 24px 20px;background:#0b0b0b;color:#f8fafc;overflow:visible;position:relative;z-index:2"><div style="max-width:800px;margin:0 auto;display:flex;justify-content:center"><a href="#oferta" class="sales-button-cta" data-button-style="step" data-animated="true" data-full-width="false" style="background-color:#16803d;color:#ffffff;padding:16px 32px;border-radius:8px;font-size:16px;font-weight:600;display:inline-flex;text-decoration:none;transition:opacity 0.2s;align-items:center;border:1px solid transparent;flex-direction:column;justify-content:center;line-height:1.2;max-width:100%;text-align:center;--sales-button-color:#16803d;--sales-button-text-color:#ffffff;--sales-button-step-color:color-mix(in srgb, #16803d 68%, black)"><span>QUIERO SALIR DE DEUDAS</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.15;margin-top:4px;opacity:0.82">Acceso inmediato después de la confirmación</span></a></div></section></div><div id="checklist-2" data-section-kind="checklist"><section style="padding:32px 24px 32px;background:#050505;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:28px;font-weight:700;letter-spacing:-0.025em;margin-bottom:10px;--sales-rich-text-h1-size:1em;--sales-rich-text-h2-size:1em;--sales-rich-text-h3-size:1em;--sales-rich-text-heading-line-height:1.14;max-width:100%;line-height:1.14;overflow-wrap:anywhere;text-wrap:balance"><p>¿ESTO ES PARA MÍ?</p></div><div class="sales-rich-text" style="color:#cbd5e1;font-size:17px;line-height:1.55;margin-bottom:24px;max-width:640px;opacity:0.86;text-align:left"><p>Si respondes que sí a 3 o más, esto en realidad es para ti</p></div><div class="sales-smart-grid" style="display:grid;justify-items:start;gap:12px;--sales-desktop-grid-template:minmax(0, 1fr)"><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">😍</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>Evitas abrir la app del banco por terror a ver el saldo.</p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">😍</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>Pagas el mínimo cada mes, pero el total nunca baja.</p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">😍</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>Ya intentaste recortar gastos, pero el dinero sigue evaporándose.</p></div></span></div><div class="sales-checklist-item" style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);text-align:left;font-size:15px;font-weight:600;justify-content:flex-start;width:100%"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0;border-radius:0;background-color:transparent;color:#22c55e;font-size:22px;font-weight:800;line-height:1">😍</span><span class="sales-checklist-item-text"><div class="sales-rich-text"><p>Quieres una ruta matemática clara de qué pagar primero.</p></div></span></div></div></div></section></div><div id="conteudo-2" data-section-kind="about"><section style="padding:64px 24px 64px;background:#0b0b0b;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:36px;font-weight:700;letter-spacing:-0.025em;margin-bottom:20px"><p>ACABA CON EL MIEDO DE ABRIR EL ESTADO DE CUENTA</p></div><div class="sales-rich-text" style="font-size:18px;line-height:1.7"><p>Trabajas duro todos los días y aun así el dinero no alcanza. Y lo peor es que sabes que estás pagando una fortuna en intereses, pero te sientes completamente atado de manos.</p><p>El problema es la Esclavitud del Mínimo. Los bancos calculan los pagos para que cubras apenas los intereses mientras tu deuda principal sigue intacta.</p><p>Ya intentaste ignorar los mensajes, prometerte que el próximo mes será diferente o pedir préstamos para tapar huecos. Nada funcionó porque el sistema está diseñado para atraparte.</p></div></div></section></div><div id="etapas" data-section-kind="steps"><section style="padding:44px 24px 44px;background:#050505;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div style="background-color:#18181b;border:1px solid rgba(255,255,255,0.16);border-radius:18px;padding:clamp(28px, 5vw, 48px)"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:34px;font-weight:700;letter-spacing:0;margin-bottom:10px;line-height:1.08;overflow-wrap:anywhere;text-align:left;text-wrap:balance;--sales-rich-text-h1-size:1em;--sales-rich-text-h2-size:1em;--sales-rich-text-h3-size:1em;--sales-rich-text-heading-line-height:1.08"><p>Cómo Funciona: Efecto Cascada</p></div><div class="sales-rich-text" style="color:#cbd5e1;font-size:17px;line-height:1.55;margin:0 auto 34px 0;max-width:640px;opacity:0.86;text-align:left"><p>3 pasos para salir de la esclavitud de las tarjetas sin volverte experto en finanzas</p></div><div class="sales-steps-list" style="display:flex;flex-direction:column;gap:0"><div class="sales-steps-item" style="display:grid;gap:18px;grid-template-columns:56px minmax(0, 1fr);position:relative"><div aria-hidden="true" style="align-items:center;display:flex;flex-direction:column;min-height:132px"><span style="align-items:center;background-color:color-mix(in srgb, #22c55e 14%, transparent);border:2px solid #22c55e;border-radius:999px;color:#22c55e;display:inline-flex;flex:0 0 auto;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:20px;font-weight:800;height:56px;justify-content:center;line-height:1;width:56px">1</span><span style="background-color:rgba(255,255,255,0.26);flex:1 1 auto;margin-top:4px;min-height:44px;width:2px"></span></div><div style="min-width:0;padding:3px 0 36px;text-align:left"><p style="color:#22c55e;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:12px;font-weight:800;letter-spacing:0;line-height:1;margin:0 0 10px;text-transform:uppercase">Etapa 01</p><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:22px;font-weight:700;letter-spacing:0;margin-bottom:12px;line-height:1.18;overflow-wrap:anywhere"><p>Radiografía de Deudas</p></div><div class="sales-rich-text" style="color:#f8fafc;font-size:17px;line-height:1.58;margin:0;opacity:0.88;overflow-wrap:anywhere"><p>Ingresa los saldos actuales, tasas aproximadas y pagos mínimos de tus tarjetas o préstamos.</p></div></div></div><div class="sales-steps-item" style="display:grid;gap:18px;grid-template-columns:56px minmax(0, 1fr);position:relative"><div aria-hidden="true" style="align-items:center;display:flex;flex-direction:column;min-height:132px"><span style="align-items:center;background-color:color-mix(in srgb, #22c55e 14%, transparent);border:2px solid #22c55e;border-radius:999px;color:#22c55e;display:inline-flex;flex:0 0 auto;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:20px;font-weight:800;height:56px;justify-content:center;line-height:1;width:56px">2</span><span style="background-color:rgba(255,255,255,0.26);flex:1 1 auto;margin-top:4px;min-height:44px;width:2px"></span></div><div style="min-width:0;padding:3px 0 36px;text-align:left"><p style="color:#22c55e;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:12px;font-weight:800;letter-spacing:0;line-height:1;margin:0 0 10px;text-transform:uppercase">Etapa 02</p><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:22px;font-weight:700;letter-spacing:0;margin-bottom:12px;line-height:1.18;overflow-wrap:anywhere"><p>Detector de Trampas</p></div><div class="sales-rich-text" style="color:#f8fafc;font-size:17px;line-height:1.58;margin:0;opacity:0.88;overflow-wrap:anywhere"><p>El sistema calcula cuánto dinero regalarás al banco si sigues igual y cuánto ahorras con el método.</p></div></div></div><div class="sales-steps-item" style="display:grid;gap:18px;grid-template-columns:56px minmax(0, 1fr);position:relative"><div aria-hidden="true" style="align-items:center;display:flex;flex-direction:column;min-height:56px"><span style="align-items:center;background-color:color-mix(in srgb, #22c55e 14%, transparent);border:2px solid #22c55e;border-radius:999px;color:#22c55e;display:inline-flex;flex:0 0 auto;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:20px;font-weight:800;height:56px;justify-content:center;line-height:1;width:56px">3</span></div><div style="min-width:0;padding:3px 0 0;text-align:left"><p style="color:#22c55e;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:12px;font-weight:800;letter-spacing:0;line-height:1;margin:0 0 10px;text-transform:uppercase">Etapa 03</p><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:22px;font-weight:700;letter-spacing:0;margin-bottom:12px;line-height:1.18;overflow-wrap:anywhere"><p>Orden de Escape</p></div><div class="sales-rich-text" style="color:#f8fafc;font-size:17px;line-height:1.58;margin:0;opacity:0.88;overflow-wrap:anywhere"><p>Recibe la secuencia exacta de qué deuda atacar primero y cómo distribuir tus pagos extra.</p></div></div></div></div></div></div></section></div><div id="conteudo-2-2" data-section-kind="about"><section style="padding:64px 24px 64px;background:#0b0b0b;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:36px;font-weight:700;letter-spacing:-0.025em;margin-bottom:20px"><p>¿CUÁNTO DINERO MÁS VAS A REGALARLE AL BANCO ESTE MES?</p></div><div class="sales-rich-text" style="font-size:18px;line-height:1.7"><p>Las deudas no dejan de crecer solo porque dejas de mirar el estado de cuenta.</p><p>Cada mes que pagas solo el mínimo, la salida se pone más cara y más lejana.</p><p>Quien enfrenta el problema hoy paga menos intereses mañana. Quien lo posterga, paga el doble.</p></div></div></section></div><div id="bonus-5" data-section-kind="bonus"><section style="padding:56px 24px 56px;background:#042d01;text-align:center;color:rgb(5, 5, 5)"><div style="max-width:800px;margin:0 auto"><div style="display:grid;grid-template-columns:1fr;align-items:stretch;border:1px solid rgba(0,0,0,0.1);border-radius:22px;background:#ffffff;box-shadow:0 18px 48px rgba(0,0,0,0.08);overflow:hidden"><div style="min-width:0;padding:28px;text-align:center;align-self:stretch;height:100%;display:flex;flex-direction:column;justify-content:flex-start"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:rgb(0, 0, 0);font-size:34px;font-weight:700;letter-spacing:-0.025em;margin-bottom:12px;line-height:1.12;text-align:center"><p>BONO 1: Simulador de Impacto</p></div><div class="sales-rich-text" style="color:rgb(5, 5, 5);font-size:18px;font-weight:700;line-height:1.42;margin-bottom:14px;text-align:center"><p>Mira el momento exacto en que tu deuda llega a cero.</p></div><div class="sales-rich-text" style="color:rgb(5, 5, 5);font-size:16px;line-height:1.65;opacity:0.88;margin-bottom:28px;text-align:center"><p>La herramienta proyecta mes a mes tu progreso real para que recuperes el aliento de inmediato.</p></div><div style="display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;gap:clamp(4px, 1.4cqw, 10px);max-width:100%;min-width:0;container-type:inline-size;border-top:1px dashed rgba(0,0,0,0.1);padding-top:22px;text-align:center;white-space:nowrap"><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(5, 5, 5);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">De</span><span style="color:#e53434;font-size:clamp(16px, 7.4cqw, 34px);font-weight:900;text-decoration:line-through;text-decoration-thickness:0.08em;min-width:0">USD $27.00</span></div><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(5, 5, 5);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">Por</span><span style="color:#1ab754;font-size:clamp(18px, 8.4cqw, 37.4px);font-weight:900;line-height:1;min-width:0">GRÁTIS</span></div></div></div></div></div></section></div><div id="bonus-4" data-section-kind="bonus"><section style="padding:56px 24px 56px;background:#022801;text-align:center;color:rgb(0, 0, 0)"><div style="max-width:800px;margin:0 auto"><div style="display:grid;grid-template-columns:1fr;align-items:stretch;border:1px solid rgba(0,0,0,0.1);border-radius:22px;background:#ffffff;box-shadow:0 18px 48px rgba(0,0,0,0.08);overflow:hidden"><div style="min-width:0;padding:28px;text-align:center;align-self:stretch;height:100%;display:flex;flex-direction:column;justify-content:flex-start"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:rgb(0, 0, 0);font-size:34px;font-weight:700;letter-spacing:-0.025em;margin-bottom:12px;line-height:1.12;text-align:center"><p>BONO 2: Calculadora de Ingresos Extra</p></div><div class="sales-rich-text" style="color:rgb(0, 0, 0);font-size:18px;font-weight:700;line-height:1.42;margin-bottom:14px;text-align:center"><p>Encuentra el dinero escondido para acelerar tu pago.</p></div><div class="sales-rich-text" style="color:rgb(0, 0, 0);font-size:16px;line-height:1.65;opacity:0.88;margin-bottom:28px;text-align:center"><p>Un cuestionario rápido de 3 minutos que destapa pequeños recortes que puedes hacer hoy.</p></div><div style="display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;gap:clamp(4px, 1.4cqw, 10px);max-width:100%;min-width:0;container-type:inline-size;border-top:1px dashed rgba(0,0,0,0.1);padding-top:22px;text-align:center;white-space:nowrap"><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(0, 0, 0);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">De</span><span style="color:#e53434;font-size:clamp(16px, 7.4cqw, 34px);font-weight:900;text-decoration:line-through;text-decoration-thickness:0.08em;min-width:0">USD $ 19.00</span></div><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(0, 0, 0);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">Por</span><span style="color:#1ab754;font-size:clamp(18px, 8.4cqw, 37.4px);font-weight:900;line-height:1;min-width:0">GRÁTIS</span></div></div></div></div></div></section></div><div id="bonus-4-2" data-section-kind="bonus"><section style="padding:56px 24px 56px;background:#092801;text-align:center;color:rgb(0, 0, 0)"><div style="max-width:800px;margin:0 auto"><div style="display:grid;grid-template-columns:1fr;align-items:stretch;border:1px solid rgba(0,0,0,0.1);border-radius:22px;background:#ffffff;box-shadow:0 18px 48px rgba(0,0,0,0.08);overflow:hidden"><div style="min-width:0;padding:28px;text-align:center;align-self:stretch;height:100%;display:flex;flex-direction:column;justify-content:flex-start"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:rgb(0, 0, 0);font-size:34px;font-weight:700;letter-spacing:-0.025em;margin-bottom:12px;line-height:1.12;text-align:center"><p>BONO 3: Planificador de Victorias</p></div><div class="sales-rich-text" style="color:rgb(5, 5, 5);font-size:18px;font-weight:700;line-height:1.42;margin-bottom:14px;text-align:center"><p>Celebra cada tarjeta liquidada con el método correcto.</p></div><div class="sales-rich-text" style="color:rgb(0, 0, 0);font-size:16px;line-height:1.65;opacity:0.88;margin-bottom:28px;text-align:center"><p>Un registro visual automático que marca tus triunfos y te da la siguiente prioridad sin dudar.</p></div><div style="display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;gap:clamp(4px, 1.4cqw, 10px);max-width:100%;min-width:0;container-type:inline-size;border-top:1px dashed rgba(0,0,0,0.1);padding-top:22px;text-align:center;white-space:nowrap"><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(0, 0, 0);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">De</span><span style="color:#e53434;font-size:clamp(16px, 7.4cqw, 34px);font-weight:900;text-decoration:line-through;text-decoration-thickness:0.08em;min-width:0">USD $ 15.00</span></div><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:rgb(0, 0, 0);font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">Por</span><span style="color:#1ab754;font-size:clamp(18px, 8.4cqw, 37.4px);font-weight:900;line-height:1;min-width:0">GRÁTIS</span></div></div></div></div></div></section></div><div id="bonus" data-section-kind="bonus"><section style="padding:56px 24px 56px;background:linear-gradient(180deg, rgba(20, 83, 45, 0.208) 0%, rgba(34, 197, 94, 0.208) 100%), #050505;text-align:center;color:#000000"><div style="max-width:800px;margin:0 auto"><div style="display:grid;grid-template-columns:1fr;align-items:stretch;border:1px solid rgba(0,0,0,0.1);border-radius:22px;background:#ffffff;box-shadow:0 18px 48px rgba(0,0,0,0.08);overflow:hidden"><div style="min-width:0;padding:28px;text-align:center;align-self:stretch;height:100%;display:flex;flex-direction:column;justify-content:flex-start"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#000000;font-size:34px;font-weight:700;letter-spacing:-0.025em;margin-bottom:12px;line-height:1.12;text-align:center"><p>BONO 4: Guion Anticobradores</p></div><div class="sales-rich-text" style="color:#000000;font-size:18px;font-weight:700;line-height:1.42;margin-bottom:14px;text-align:center"><p>Frases exactas para poner a los despachos en su lugar.</p></div><div class="sales-rich-text" style="color:#000000;font-size:16px;line-height:1.65;opacity:0.88;margin-bottom:28px;text-align:center"><p>Copias el texto y se lo envías al banco para frenar el acoso de llamadas y negociar sin miedo.</p></div><div style="display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;gap:clamp(4px, 1.4cqw, 10px);max-width:100%;min-width:0;container-type:inline-size;border-top:1px dashed rgba(0,0,0,0.1);padding-top:22px;text-align:center;white-space:nowrap"><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:#000000;font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">De</span><span style="color:#e53434;font-size:clamp(16px, 7.4cqw, 34px);font-weight:900;text-decoration:line-through;text-decoration-thickness:0.08em;min-width:0">USD $27.00</span></div><div style="display:inline-flex;align-items:baseline;gap:clamp(3px, 1.2cqw, 8px);min-width:0;flex-shrink:1"><span style="color:#000000;font-size:clamp(14px, 5.4cqw, 26.5px);font-weight:800;flex:0 0 auto">Por</span><span style="color:#1ab754;font-size:clamp(18px, 8.4cqw, 37.4px);font-weight:900;line-height:1;min-width:0">GRÁTIS</span></div></div></div></div></div></section></div><div id="depoimentos" data-section-kind="testimonials"><section style="padding:64px 24px 64px;background:#050505;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:36px;font-weight:700;letter-spacing:-0.025em;margin-bottom:32px;text-align:center"><p>Casos de exito</p></div><div class="sales-testimonials-grid" style="--sales-testimonials-desktop-grid-template:1fr;display:grid;gap:20px"><div style="background-color:#18181b;padding:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.05);text-align:center"><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-bottom:20px;font-style:italic"><p>"Evitaba abrir el banco. Cuando vi el orden de qué pagar primero, sentí que mi cabeza se destrabó."</p></div><div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center"><strong style="font-size:15px">Maria cuellar </strong></div></div><div style="background-color:#18181b;padding:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.05);text-align:center"><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-bottom:20px;font-style:italic"><p>"Pensé que tardaría diez años en pagar. Con la calculadora descubrí que puedo hacerlo en tres."</p></div><div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center"><strong style="font-size:15px">Carlos Sánchez </strong></div></div><div style="background-color:#18181b;padding:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.05);text-align:center"><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-bottom:20px;font-style:italic"><p>"Usé el guion para hablar con el banco y por fin pararon las llamadas amenazantes."</p></div><div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center"><strong style="font-size:15px">Nancy sánchez</strong></div></div></div></div></section></div><div id="ancoragem" data-section-kind="anchoring"><section style="padding:40px 24px 40px;background:#0b0b0b;text-align:center;color:#ffffff"><div style="max-width:640px;margin:0 auto"><div style="border:1.5px solid rgba(255,255,255,0.16);border-radius:16px;padding:28px 24px;background-color:#102e05"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#ffffff;font-size:28px;font-weight:700;letter-spacing:-0.025em;margin-bottom:24px;text-align:center"><p>RESUMEN DE TU ACCESO</p></div><div style="display:flex;flex-direction:column"><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.16)"><span aria-hidden="true" style="flex:0 0 auto;color:#22c55e;font-size:18px;line-height:1;font-weight:700">✓</span><div class="sales-rich-text" style="flex:1 1 auto;font-size:17px;text-align:left"><p>Calculadora de la Verdad</p></div><span style="flex:0 0 auto;color:#2dc80e;font-weight:800;font-size:17px;white-space:nowrap">USD $ 47.00</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.16)"><span aria-hidden="true" style="flex:0 0 auto;color:#22c55e;font-size:18px;line-height:1;font-weight:700">✓</span><div class="sales-rich-text" style="flex:1 1 auto;font-size:17px;text-align:left"><p>Bono #1 — Guion Anticobradores</p></div><span style="flex:0 0 auto;color:#2dc80e;font-weight:800;font-size:17px;white-space:nowrap">USD $ 27.00</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.16)"><span aria-hidden="true" style="flex:0 0 auto;color:#22c55e;font-size:18px;line-height:1;font-weight:700">✓</span><div class="sales-rich-text" style="flex:1 1 auto;font-size:17px;text-align:left"><p>Bono #2 — Simulador de Impacto</p></div><span style="flex:0 0 auto;color:#2dc80e;font-weight:800;font-size:17px;white-space:nowrap">USD $ 27.00</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.16)"><span aria-hidden="true" style="flex:0 0 auto;color:#22c55e;font-size:18px;line-height:1;font-weight:700">✓</span><div class="sales-rich-text" style="flex:1 1 auto;font-size:17px;text-align:left"><p>Bono #3 — Calculadora de Ingresos Extra</p></div><span style="flex:0 0 auto;color:#2dc80e;font-weight:800;font-size:17px;white-space:nowrap">USD $ 19.00</span></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:none"><span aria-hidden="true" style="flex:0 0 auto;color:#22c55e;font-size:18px;line-height:1;font-weight:700">✓</span><div class="sales-rich-text" style="flex:1 1 auto;font-size:17px;text-align:left"><p>Bono #4 — Planificador de Victorias</p></div><span style="flex:0 0 auto;color:#2dc80e;font-weight:800;font-size:17px;white-space:nowrap">USD $ 19.00</span></div></div><div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.16);text-align:center;color:#2dc80e;font-family:&#x27;Inter&#x27;, system-ui, sans-serif"><p style="font-size:36px;font-weight:900;margin:4px 0 0;line-height:1.1;text-decoration:line-through;text-decoration-color:#2dc80e">USD $ 139.00</p></div></div></div></section></div><div id="oferta" data-section-kind="pricing"><section class="sales-pricing-section" style="padding:53px 24px 53px;text-align:center;background:#050505;color:#111111;position:relative;z-index:2"><div style="max-width:800px;margin:0 auto"><div class="sales-pricing-card" style="max-width:520px;margin:0 auto;padding:20px 32px;border:1.5px solid rgba(0,0,0,0.12);border-radius:16px;background-color:#ffffff;color:#111111;overflow:visible;position:relative;z-index:2"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-size:32px;margin-bottom:12px;font-weight:700;letter-spacing:-0.025em"><p>Asegura tu acceso ahora por solo</p></div><div style="margin-bottom:16px"><p style="font-size:56px;font-weight:800;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;line-height:1.1;color:#1ab754;margin:0">USD $ 14.00</p></div><a href="#" class="sales-button-cta" data-button-style="step" data-animated="true" data-full-width="true" style="background-color:#16803d;color:#ffffff;padding:18px 40px;border-radius:8px;font-size:18px;font-weight:600;display:inline-flex;text-decoration:none;transition:opacity 0.2s;align-items:center;border:1px solid transparent;flex-direction:column;justify-content:center;line-height:1.2;max-width:var(--sales-button-full-max-width, 100%);text-align:center;width:100%;--sales-button-color:#16803d;--sales-button-text-color:#ffffff;--sales-button-step-color:color-mix(in srgb, #16803d 68%, black)"><span>[ACTIVAR MI PLAN PERSONALIZADO]</span></a></div></div></section></div><div id="garantia" data-section-kind="guarantee"><section style="padding:64px 24px 64px;background:#0b0b0b;text-align:center;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:128px;height:128px;margin-bottom:28px"><div aria-hidden="true" style="position:absolute;inset:-10px;border-radius:50%;border:2px dashed #22c55e;opacity:0.45"></div><div style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.22), rgba(255,255,255,0) 60%), #22c55e;color:#000000;box-shadow:0 14px 30px rgba(0,0,0,0.18), inset 0 -6px 14px rgba(0,0,0,0.18), inset 0 2px 6px rgba(255,255,255,0.25);font-family:&#x27;Inter&#x27;, system-ui, sans-serif;line-height:1"><span style="font-size:44px;font-weight:900;letter-spacing:-0.02em">7</span><span style="font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-top:2px;opacity:0.9">DIAS</span></div></div><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:32px;font-weight:700;letter-spacing:-0.025em;margin-bottom:16px"><p>GARANTÍA INCONDICIONAL DE 7 DÍAS</p></div><div class="sales-rich-text" style="font-size:18px;line-height:1.6;opacity:0.85"><p>Si la pruebas y sientes que no es para ti, te devolvemos tu dinero. Sin preguntas incómodas. Sin trámites.</p></div></div></section></div><div id="faq" data-section-kind="faq"><section style="padding:40px 24px 40px;background:#050505;text-align:left;color:#f8fafc"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:36px;font-weight:700;letter-spacing:-0.025em;margin-bottom:32px"><p>PREGUNTAS FRECUENTES</p></div><div><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Cómo accedo?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Recibes el acceso después de la compra y entras desde el navegador del celular o la computadora.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Es un curso en video?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>No. Es una herramienta interactiva que hace los cálculos por ti y te entrega tu plan.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Cuánto tiempo toma ver resultados?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Obtienes tu diagnóstico completo en 8 minutos y sabes exactamente qué hacer hoy.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Y si tengo muchas deudas en varios bancos?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Mejor todavía. La calculadora está hecha para ordenar caos grandes y juntarlos en un solo plan.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Funciona en el celular?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Sí, puedes usarlo desde cualquier teléfono sin instalar nada pesado.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Qué pasa si mis ingresos son variables?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Puedes ajustar los pagos extra cada mes según lo que ganes sin romper la estrategia.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Puede generar un menú según mis indicaciones médicas?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Sí. Combina preparaciones dentro de reglas y objetivos configurados. Si una regla crítica no está confirmada, marca el plan para revisión.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿El banco se entera de que uso la calculadora?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>No. Tus datos se quedan en tu dispositivo y nadie más tiene acceso a ellos.</p></div></details><details style="border-bottom:1px solid rgba(255,255,255,0.16);padding:20px 0"><summary style="font-size:18px;font-weight:600;cursor:pointer;list-style:none">¿Necesito saber de matemáticas?</summary><div class="sales-rich-text" style="font-size:16px;line-height:1.6;margin-top:12px;opacity:0.85"><p>Cero. El sistema hace todas las cuentas complejas de interés compuesto por ti</p></div></details></div></div></section></div><div id="contador" data-section-kind="countdown"><section style="padding:42px 24px 42px;background:#0b0b0b;text-align:center;color:#f8fafc"><div style="max-width:640px;margin:0 auto"><div class="sales-countdown" data-countdown-target="2026-09-30T22:39" data-countdown-mode="automatic" data-countdown-duration-seconds="780" data-countdown-storage-key="sales-countdown:cb045bf4-26cc-4924-b27a-793870eb4e73:780" data-countdown-expired-text="Oferta encerrada" style="text-align:center"><div class="sales-rich-text" style="font-family:&#x27;Inter&#x27;, system-ui, sans-serif;color:#f8fafc;font-size:30px;font-weight:700;letter-spacing:0;margin-bottom:10px;line-height:1.12;overflow-wrap:anywhere;text-align:center"><p>Oferta por tempo limitado</p></div><div class="sales-rich-text" style="color:#cbd5e1;font-size:16px;line-height:1.5;margin:0 0 24px;opacity:0.88;overflow-wrap:anywhere;text-align:center"><p>Essa condição especial expira em:</p></div><div class="sales-countdown-grid" style="--sales-countdown-border-color:rgba(255,255,255,0.16);--sales-countdown-accent-color:#e53434;--sales-countdown-columns:2;--sales-countdown-number-size:34px;--sales-countdown-label-size:11px;--sales-countdown-scale:1"><div class="sales-countdown-cell" style="background-color:#202938;border:1px solid rgba(255,255,255,0.16);border-radius:14px;min-width:0;overflow:hidden;padding:var(--sales-countdown-cell-block-padding) var(--sales-countdown-cell-inline-padding);text-align:center"><span class="sales-countdown-value" data-unit="minutes" style="color:#e53434;display:block;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-variant-numeric:tabular-nums;font-weight:900;line-height:1;white-space:nowrap;word-break:keep-all">13</span><span data-label-unit="minutes" style="color:#f8fafc;display:block;font-weight:800;letter-spacing:0;line-height:1;margin-top:10px;opacity:0.72;white-space:nowrap;word-break:keep-all">MIN</span></div><div class="sales-countdown-cell" style="background-color:#202938;border:1px solid rgba(255,255,255,0.16);border-radius:14px;min-width:0;overflow:hidden;padding:var(--sales-countdown-cell-block-padding) var(--sales-countdown-cell-inline-padding);text-align:center"><span class="sales-countdown-value" data-unit="seconds" style="color:#e53434;display:block;font-family:&#x27;Inter&#x27;, system-ui, sans-serif;font-variant-numeric:tabular-nums;font-weight:900;line-height:1;white-space:nowrap;word-break:keep-all">00</span><span data-label-unit="seconds" style="color:#f8fafc;display:block;font-weight:800;letter-spacing:0;line-height:1;margin-top:10px;opacity:0.72;white-space:nowrap;word-break:keep-all">SEG</span></div></div><p class="sales-countdown-expired" style="color:#e53434;display:none;font-size:16px;font-weight:800;margin:18px 0 0">Oferta encerrada</p></div></div></section></div><div id="setas" data-section-kind="arrows"><section style="padding:22px 24px 22px;background:#050505;color:#22c55e"><div style="max-width:800px;margin:0 auto"><div aria-hidden="true" class="sales-arrows" data-animated="true" data-animation-style="flow" data-direction="down" style="align-items:center;display:flex;gap:10px;justify-content:center;line-height:0"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:0ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:90ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:180ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:270ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:360ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:450ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down sales-arrow-icon" style="animation-delay:540ms;color:#22c55e;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.16))"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></div></div></section></div><div id="botao-2" data-section-kind="button"><section class="sales-button-section" style="padding:20px 24px 20px;background:#0b0b0b;color:#f8fafc;overflow:visible;position:relative;z-index:2"><div style="max-width:800px;margin:0 auto;display:flex;justify-content:center"><a href="#oferta" class="sales-button-cta" data-button-style="step" data-animated="true" data-full-width="true" style="background-color:#16803d;color:#ffffff;padding:16px 32px;border-radius:8px;font-size:16px;font-weight:600;display:inline-flex;text-decoration:none;transition:opacity 0.2s;align-items:center;border:1px solid transparent;flex-direction:column;justify-content:center;line-height:1.2;max-width:var(--sales-button-full-max-width, 100%);text-align:center;width:100%;--sales-button-color:#16803d;--sales-button-text-color:#ffffff;--sales-button-step-color:color-mix(in srgb, #16803d 68%, black)"><span>QUIERO RECUPERAR MI PAZ HOY</span><span style="display:block;font-size:13px;font-weight:600;line-height:1.15;margin-top:4px;opacity:0.82">Pago 100% seguro</span></a></div></section></div><div id="rodape" data-section-kind="footer"><footer style="padding:32px 24px 32px;text-align:center;font-size:14px;background:#050505;color:#f8fafc;font-family:&#x27;Inter&#x27;, system-ui, sans-serif"><div style="max-width:800px;margin:0 auto"><div class="sales-rich-text"><p>© Todos os direitos reservados.</p></div></div></footer></div></div>
+<script>
+(function () {
+  var delayedSections = document.querySelectorAll("[data-sales-delay-seconds]");
+  delayedSections.forEach(function (section) {
+    var delay = Number(section.getAttribute("data-sales-delay-seconds") || "0");
+    if (!Number.isFinite(delay) || delay <= 0) return;
+    window.setTimeout(function () {
+      section.style.display = "";
+      section.removeAttribute("aria-hidden");
+      section.classList.add("sales-delay-visible");
+    }, Math.round(delay * 1000));
+  });
+})();
+</script>
+<script>
+(function () {
+  function pad(value) {
+    return String(Math.max(0, value)).padStart(2, "0");
+  }
+
+  function updateCountdown(countdown) {
+    var target = resolveCountdownTarget(countdown);
+    var total = Number.isFinite(target) ? Math.max(0, target - Date.now()) : 0;
+    var totalSeconds = Math.floor(total / 1000);
+    var values = {
+      days: Math.floor(totalSeconds / 86400),
+      hours: Math.floor((totalSeconds % 86400) / 3600),
+      minutes: Math.floor((totalSeconds % 3600) / 60),
+      seconds: totalSeconds % 60
+    };
+
+    Object.keys(values).forEach(function (unit) {
+      var el = countdown.querySelector('[data-unit="' + unit + '"]');
+      if (el) el.textContent = pad(values[unit]);
+    });
+
+    var expired = countdown.querySelector(".sales-countdown-expired");
+    if (expired) expired.style.display = total <= 0 ? "block" : "none";
+  }
+
+  function resolveCountdownTarget(countdown) {
+    var resolved = Number(countdown.getAttribute("data-countdown-resolved-target") || "0");
+    if (Number.isFinite(resolved) && resolved > 0) return resolved;
+
+    var mode = countdown.getAttribute("data-countdown-mode") || "fixed";
+    if (mode === "automatic") {
+      var key = countdown.getAttribute("data-countdown-storage-key") || "";
+      var stored = 0;
+      try {
+        stored = key ? Number(window.localStorage.getItem(key) || "0") : 0;
+      } catch (_error) {
+        stored = 0;
+      }
+      if (Number.isFinite(stored) && stored > 0) {
+        countdown.setAttribute("data-countdown-resolved-target", String(stored));
+        return stored;
+      }
+
+      var durationSeconds = Number(countdown.getAttribute("data-countdown-duration-seconds") || "1200");
+      if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) durationSeconds = 1200;
+      var automaticTarget = Date.now() + Math.round(durationSeconds * 1000);
+      countdown.setAttribute("data-countdown-resolved-target", String(automaticTarget));
+      try {
+        if (key) window.localStorage.setItem(key, String(automaticTarget));
+      } catch (_error) {
+        // localStorage can be unavailable in strict browser modes; the in-page target still works.
+      }
+      return automaticTarget;
+    }
+
+    var targetValue = countdown.getAttribute("data-countdown-target") || "";
+    var fixedTarget = new Date(targetValue).getTime();
+    countdown.setAttribute("data-countdown-resolved-target", String(fixedTarget));
+    return fixedTarget;
+  }
+
+  var countdowns = Array.prototype.slice.call(document.querySelectorAll(".sales-countdown[data-countdown-target]"));
+  if (countdowns.length === 0) return;
+  countdowns.forEach(updateCountdown);
+  window.setInterval(function () {
+    countdowns.forEach(updateCountdown);
+  }, 1000);
+})();
+</script>
+
+
+</body>
+</html>
